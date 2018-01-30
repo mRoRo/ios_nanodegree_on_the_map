@@ -13,6 +13,13 @@
 		4F41DDBD201A4CAD00C032B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F41DDBC201A4CAD00C032B9 /* Assets.xcassets */; };
 		4F41DDC0201A4CAD00C032B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F41DDBE201A4CAD00C032B9 /* LaunchScreen.storyboard */; };
 		4F451A7C201B23E4004DD063 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A7B201B23E3004DD063 /* ViewConstants.swift */; };
+		4F451A81201B3EE3004DD063 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A80201B3EE3004DD063 /* UdacityConstants.swift */; };
+		4F451A83201B4319004DD063 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A82201B4319004DD063 /* UdacityClient.swift */; };
+		4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A85201B4FCF004DD063 /* TextFields.swift */; };
+		4F451A88201B68DA004DD063 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A87201B68DA004DD063 /* UdacityConvenience.swift */; };
+		4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8A201F0E13004DD063 /* DateUtils.swift */; };
+		4F451A8D201F4ED6004DD063 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */; };
+		4F451A8F201F5103004DD063 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8E201F5103004DD063 /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		4F41DDBF201A4CAD00C032B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F41DDC1201A4CAD00C032B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F451A7B201B23E3004DD063 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		4F451A80201B3EE3004DD063 /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		4F451A82201B4319004DD063 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		4F451A85201B4FCF004DD063 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		4F451A87201B68DA004DD063 /* UdacityConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
+		4F451A8A201F0E13004DD063 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		4F451A8E201F5103004DD063 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,9 @@
 		4F41DDB4201A4CAD00C032B9 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				4F451A89201F0DFC004DD063 /* Utils */,
+				4F451A84201B4FA1004DD063 /* ViewDelegates */,
+				4F451A7D201B3E92004DD063 /* Model */,
 				4F451A7A201B23C6004DD063 /* View */,
 				4F41DDC7201A4D6500C032B9 /* Assets */,
 				4F41DDB5201A4CAD00C032B9 /* AppDelegate.swift */,
@@ -79,8 +96,52 @@
 			isa = PBXGroup;
 			children = (
 				4F451A7B201B23E3004DD063 /* ViewConstants.swift */,
+				4F451A8E201F5103004DD063 /* Alerts.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4F451A7D201B3E92004DD063 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F451A7E201B3E9E004DD063 /* Clients */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F451A7E201B3E9E004DD063 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				4F451A7F201B3EAC004DD063 /* Udacity */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		4F451A7F201B3EAC004DD063 /* Udacity */ = {
+			isa = PBXGroup;
+			children = (
+				4F451A80201B3EE3004DD063 /* UdacityConstants.swift */,
+				4F451A82201B4319004DD063 /* UdacityClient.swift */,
+				4F451A87201B68DA004DD063 /* UdacityConvenience.swift */,
+			);
+			path = Udacity;
+			sourceTree = "<group>";
+		};
+		4F451A84201B4FA1004DD063 /* ViewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				4F451A85201B4FCF004DD063 /* TextFields.swift */,
+			);
+			path = ViewDelegates;
+			sourceTree = "<group>";
+		};
+		4F451A89201F0DFC004DD063 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4F451A8A201F0E13004DD063 /* DateUtils.swift */,
+				4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +216,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F451A83201B4319004DD063 /* UdacityClient.swift in Sources */,
+				4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */,
 				4F451A7C201B23E4004DD063 /* ViewConstants.swift in Sources */,
+				4F451A81201B3EE3004DD063 /* UdacityConstants.swift in Sources */,
+				4F451A8F201F5103004DD063 /* Alerts.swift in Sources */,
+				4F451A8D201F4ED6004DD063 /* GCDBlackBox.swift in Sources */,
 				4F41DDB8201A4CAD00C032B9 /* LoginViewController.swift in Sources */,
 				4F41DDB6201A4CAD00C032B9 /* AppDelegate.swift in Sources */,
+				4F451A88201B68DA004DD063 /* UdacityConvenience.swift in Sources */,
+				4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -282,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

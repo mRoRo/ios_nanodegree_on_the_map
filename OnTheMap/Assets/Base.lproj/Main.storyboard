@@ -28,7 +28,7 @@
                                             <constraint firstAttribute="width" constant="60" id="g3X-qd-YcT"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ty9-R3-t9G">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ty9-R3-t9G">
                                         <rect key="frame" x="62.666666666666657" y="110" width="249.99999999999997" height="110"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxK-ds-44G">
@@ -54,6 +54,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="loginPressed:" destination="BJf-8f-bXy" eventType="touchUpInside" id="swP-pR-PB4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -78,12 +81,24 @@
                             <constraint firstItem="uG6-AO-Lrg" firstAttribute="centerX" secondItem="CgO-nD-sMA" secondAttribute="centerX" id="azI-4S-Mwh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CgO-nD-sMA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ktE-iz-Pfl" appends="YES" id="P7K-Mv-Au5"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="Zal-Cf-h2J" id="hp7-9B-RjZ"/>
+                        <outlet property="contentView" destination="uG6-AO-Lrg" id="gMh-HH-RHG"/>
+                        <outlet property="loginButton" destination="Zal-Cf-h2J" id="714-xY-naX"/>
+                        <outlet property="passwordTextField" destination="49l-3J-iit" id="vgP-e2-XeU"/>
+                        <outlet property="stackView" destination="ty9-R3-t9G" id="GLT-Xa-Cb8"/>
+                        <outlet property="userNameTextField" destination="vxK-ds-44G" id="0cO-sb-Owz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgi-Y6-fGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ktE-iz-Pfl">
+                    <connections>
+                        <action selector="userDidTapView:" destination="BJf-8f-bXy" id="IIe-tU-FeW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>

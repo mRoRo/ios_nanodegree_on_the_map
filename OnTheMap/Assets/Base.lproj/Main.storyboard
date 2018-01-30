@@ -73,12 +73,21 @@
                                     <constraint firstAttribute="bottom" secondItem="ty9-R3-t9G" secondAttribute="bottom" id="boR-7j-QSl"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpS-Cx-ggN">
+                                <rect key="frame" x="62.666666666666657" y="531" width="249.99999999999997" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Don´t have an account? Sign Up"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GpS-Cx-ggN" firstAttribute="trailing" secondItem="ty9-R3-t9G" secondAttribute="trailing" id="4Pf-Sm-Kia"/>
                             <constraint firstItem="uG6-AO-Lrg" firstAttribute="width" secondItem="DrM-jI-k1G" secondAttribute="width" id="FXa-kW-Mh6"/>
+                            <constraint firstItem="GpS-Cx-ggN" firstAttribute="top" secondItem="uG6-AO-Lrg" secondAttribute="bottom" constant="10" id="QTX-jH-ejp"/>
                             <constraint firstItem="uG6-AO-Lrg" firstAttribute="centerY" secondItem="CgO-nD-sMA" secondAttribute="centerY" id="Rth-S4-9tM"/>
                             <constraint firstItem="uG6-AO-Lrg" firstAttribute="centerX" secondItem="CgO-nD-sMA" secondAttribute="centerX" id="azI-4S-Mwh"/>
+                            <constraint firstItem="GpS-Cx-ggN" firstAttribute="leading" secondItem="ty9-R3-t9G" secondAttribute="leading" id="ixu-L9-X4t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CgO-nD-sMA"/>
                         <connections>
@@ -89,6 +98,7 @@
                         <outlet property="contentView" destination="uG6-AO-Lrg" id="gMh-HH-RHG"/>
                         <outlet property="loginButton" destination="Zal-Cf-h2J" id="714-xY-naX"/>
                         <outlet property="passwordTextField" destination="49l-3J-iit" id="vgP-e2-XeU"/>
+                        <outlet property="signUpButton" destination="GpS-Cx-ggN" id="exP-Xc-Z3D"/>
                         <outlet property="stackView" destination="ty9-R3-t9G" id="GLT-Xa-Cb8"/>
                         <outlet property="userNameTextField" destination="vxK-ds-44G" id="0cO-sb-Owz"/>
                     </connections>

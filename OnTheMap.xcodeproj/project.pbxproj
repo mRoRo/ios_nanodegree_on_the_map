@@ -20,6 +20,7 @@
 		4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8A201F0E13004DD063 /* DateUtils.swift */; };
 		4F451A8D201F4ED6004DD063 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */; };
 		4F451A8F201F5103004DD063 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8E201F5103004DD063 /* Alerts.swift */; };
+		4F66EE4020208A56008CD707 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE3F20208A56008CD707 /* Styles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4F451A8A201F0E13004DD063 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		4F451A8E201F5103004DD063 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		4F66EE3F20208A56008CD707 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				4F451A7B201B23E3004DD063 /* ViewConstants.swift */,
 				4F451A8E201F5103004DD063 /* Alerts.swift */,
+				4F66EE3F20208A56008CD707 /* Styles.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F66EE4020208A56008CD707 /* Styles.swift in Sources */,
 				4F451A83201B4319004DD063 /* UdacityClient.swift in Sources */,
 				4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */,
 				4F451A7C201B23E4004DD063 /* ViewConstants.swift in Sources */,

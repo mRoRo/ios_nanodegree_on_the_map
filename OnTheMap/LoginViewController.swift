@@ -16,10 +16,12 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet var signUpButton: UIButton!
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        styleButtons()
         userNameTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -80,9 +82,4 @@ class LoginViewController: UIViewController {
     }
     
     // TODO: Add the link to udacity web to sign up
-    
-    // MARK: Styling
-    private func styling() {
-        loginButton.backgroundColor = UIColor.udacityBlue
-    }
 }

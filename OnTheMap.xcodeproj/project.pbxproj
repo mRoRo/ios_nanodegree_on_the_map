@@ -21,6 +21,7 @@
 		4F451A8D201F4ED6004DD063 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */; };
 		4F451A8F201F5103004DD063 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8E201F5103004DD063 /* Alerts.swift */; };
 		4F66EE4020208A56008CD707 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE3F20208A56008CD707 /* Styles.swift */; };
+		4F66EE422020C155008CD707 /* UdacityClientUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE412020C155008CD707 /* UdacityClientUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		4F451A8E201F5103004DD063 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F66EE3F20208A56008CD707 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		4F66EE412020C155008CD707 /* UdacityClientUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClientUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				4F451A80201B3EE3004DD063 /* UdacityConstants.swift */,
 				4F451A82201B4319004DD063 /* UdacityClient.swift */,
 				4F451A87201B68DA004DD063 /* UdacityConvenience.swift */,
+				4F66EE412020C155008CD707 /* UdacityClientUtils.swift */,
 			);
 			path = Udacity;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				4F41DDB8201A4CAD00C032B9 /* LoginViewController.swift in Sources */,
 				4F41DDB6201A4CAD00C032B9 /* AppDelegate.swift in Sources */,
 				4F451A88201B68DA004DD063 /* UdacityConvenience.swift in Sources */,
+				4F66EE422020C155008CD707 /* UdacityClientUtils.swift in Sources */,
 				4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

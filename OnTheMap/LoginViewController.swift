@@ -54,11 +54,10 @@ class LoginViewController: UIViewController {
         userDidTapView(self)
         
         if userNameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            performUIUpdatesOnMain {
-                self.showAlert(text:"Username or Password Empty.")
-            }
+            self.showAlert(text:"Username or Password Empty.")
         }
         else {
+            self.view.showBlurLoader()
             getSessionId()
         }
     }
@@ -79,9 +78,7 @@ class LoginViewController: UIViewController {
         UdacityClient.sharedInstance().postToGetSessionID(userName: userName!, password: password!) { (sessionId, error) in
             if let error = error {
                 print("There was an error at postToGetSessionID: \(error)")
-                performUIUpdatesOnMain {
-                    self.showAlert(text:error.localizedDescription)
-                }
+                self.showAlert(text:error.localizedDescription)
             }
             else {
                 if sessionId != nil {
@@ -89,6 +86,7 @@ class LoginViewController: UIViewController {
                     // TODO: logout
                 }
             }
+            self.view.removeBlurLoader()
         }
     }
 }

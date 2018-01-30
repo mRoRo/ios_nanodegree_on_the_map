@@ -57,6 +57,7 @@ extension UdacityClient {
                 }
                 
                 // the sessionId is correct!! Use it at completionHandlerForSession
+                sessionID = sessionId
                 completionHandlerForSession(sessionId, nil)
             }
         }

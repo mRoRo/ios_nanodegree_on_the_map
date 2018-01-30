@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class LoginViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var signUpButton: UIButton!
+    
+    let signUpUrl = "https://www.udacity.com/account/auth#!/signup"
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -60,6 +63,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func signUpPressed(_ sender: Any) {
+        if let url = URL(string: signUpUrl) {
+            let signUpVc = SFSafariViewController(url: url)
+            present(signUpVc, animated: true, completion: nil)
+        }
+    }
+
+    
     // MARK: Network
     func getSessionId() {
         let userName = userNameTextField.text
@@ -80,6 +91,4 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    // TODO: Add the link to udacity web to sign up
 }

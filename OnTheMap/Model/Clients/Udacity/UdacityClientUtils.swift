@@ -53,21 +53,43 @@ extension UdacityClient {
             completionHandler(nil, NSError(domain: domain, code: 1, userInfo: userInfo))
         }
         
-        /* GUARD: Was there an error? */
-        guard (error == nil) else {
-            sendError("There was an error with your request: \(error!)")
+        /* IF LET: Was there an error? */
+        if let requestError = error {
+            print("There was an error with your request: \(requestError)")
+            
+            switch requestError.code {
+            case NSURLErrorNotConnectedToInternet:
+                sendError("Please, check your internet connection")
+            default:
+                sendError("There was an error with your request")
+            }
             return nil
         }
         
-        /* GUARD: Did we get a successful 2XX response? */
-        guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-            sendError("Your request returned a status code other than 2xx!")
-            return nil
+        /* IF LET: Did we get a successful 2XX response? */
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+            // error statusCode
+            if (statusCode <= 200 || statusCode >= 299) {
+                print("Your request returned an status code other than 2xx!: \(statusCode)")
+                
+                switch statusCode {
+                case HTTPStatusCodes.Forbidden.rawValue:
+                    sendError("Invalid user and/or password")
+                case HTTPStatusCodes.RequestTimeout.rawValue:
+                    sendError("The server is not available at the momment. Please try it later")
+                case HTTPStatusCodes.NotFound.rawValue:
+                    sendError("The server can't be reached")
+                default:
+                    sendError("Your request returned an error")
+                }
+                return nil
+            }
         }
         
         /* GUARD: Was there any data returned? */
         guard let data = data else {
-            sendError("No data was returned by the request!: \(request)")
+            sendError("No data was returned by the request!")
+            print("No data was returned by the request!: \(request)")
             return nil
         }
         

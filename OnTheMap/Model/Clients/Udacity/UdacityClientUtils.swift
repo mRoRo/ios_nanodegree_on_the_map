@@ -69,7 +69,7 @@ extension UdacityClient {
         /* IF LET: Did we get a successful 2XX response? */
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             // error statusCode
-            if (statusCode <= 200 || statusCode >= 299) {
+            if (statusCode < 200 || statusCode > 299) {
                 print("Your request returned an status code other than 2xx!: \(statusCode)")
                 
                 switch statusCode {

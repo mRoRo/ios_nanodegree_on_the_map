@@ -53,7 +53,8 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         userDidTapView(self)
         
-        if userNameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
+        if userNameTextField.text!.isEmpty ||
+            passwordTextField.text!.isEmpty {
             self.showAlert(text:"Username or Password Empty.")
         }
         else {
@@ -75,18 +76,22 @@ class LoginViewController: UIViewController {
         let userName = userNameTextField.text
         let password = passwordTextField.text
         
-        UdacityClient.sharedInstance().postToGetSessionID(userName: userName!, password: password!) { (sessionId, error) in
+        UdacityClient.sharedInstance().postToGetSessionID(userName: userName!, password: password!) { (success, error) in
             if let error = error {
                 print("There was an error at postToGetSessionID: \(error)")
                 self.showAlert(text:error.localizedDescription)
             }
-            else {
-                if sessionId != nil {
-                    print("session ID: " + sessionId!)
-                    // TODO: logout
-                }
+            else if success {
+                print ("Logged!!")
+                self.presentMapAndTableTabbedView()
             }
             self.view.removeBlurLoader()
         }
+    }
+    
+    // MARK: Navigation
+    func presentMapAndTableTabbedView() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MapAndTableTabbedView") as! UINavigationController
+        self.present(vc, animated: true, completion: nil)
     }
 }

@@ -22,3 +22,10 @@ extension LoginViewController {
         signUpButton.setAttributedTitle(attrStr, for: .normal)
     }
 }
+
+extension MapAndTableController {
+    
+    func styleLogoutButton () {
+        logoutButton.tintColor = UIColor.udacityBlue
+    }
+}

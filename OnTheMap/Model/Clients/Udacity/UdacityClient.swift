@@ -16,8 +16,27 @@ class UdacityClient : NSObject {
     
     // authentication state
     var requestToken: String? = nil
-    var sessionID : String? = nil
+    var udacitySession : UdacitySession? = nil
     var userID : Int? = nil
+    
+    struct UdacitySession {
+        let sessionId: String
+        let expirationDate: String
+        
+        // MARK: Initializers
+        init(id: String, expiration: String) {
+            sessionId = id
+            expirationDate = expiration
+        }
+        
+        func isDateExpired () -> Bool {
+            let formatter = DateFormatter()
+            if let utcDate = formatter.datefromUdacityApiString(expirationDate) {
+                 return Date().compare(utcDate) == .orderedDescending
+            }
+            return true
+        }
+    }
     
     // MARK: Initializers
     override init() {

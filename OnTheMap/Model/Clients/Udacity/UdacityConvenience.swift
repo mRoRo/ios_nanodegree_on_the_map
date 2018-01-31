@@ -11,7 +11,7 @@ import Foundation
 extension UdacityClient {
     
     
-    func postToGetSessionID(userName:String, password:String, _ completionHandlerForSession: @escaping (_ result: String?, _ error: NSError?) -> Void) {
+    func postToGetSessionID(userName:String, password:String, _ completionHandlerForSession: @escaping (_ result: Bool, _ error: NSError?) -> Void) {
         
         /* Specify parameters, method (if has {key}), and HTTP body (if POST) */
         
@@ -29,36 +29,44 @@ extension UdacityClient {
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                completionHandlerForSession(nil, error)
+                completionHandlerForSession(false, error)
             } else {
                 
                 // check the registered value
                 guard let account = results?[UdacityClient.JSONResponseKeys.Account] as? [String : AnyObject],
                     let registered = account[UdacityClient.JSONResponseKeys.Registered] as? Bool, registered == true else {
-                        completionHandlerForSession(nil, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
+                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
                 
                 // check the expiration date
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
-                    let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String,
-                    !expirationDate.isDateExpired () else {
-                        completionHandlerForSession(nil, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID or session has expired"]))
+                    let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
+                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
                 
                 // check the session ID
                 guard let sessionId = session[UdacityClient.JSONResponseKeys.SessionId] as? String, sessionId != "" else {
-                    completionHandlerForSession(nil, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
+                    completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
                     print(("Cannot find key '\(UdacityClient.JSONResponseKeys.SessionId)' in \(results ?? "unknown" as AnyObject)"))
                     return
                 }
                 
-                // the sessionId is correct!! Use it at completionHandlerForSession
-                self.sessionID = sessionId
-                completionHandlerForSession(sessionId, nil)
+                // change Session
+                self.udacitySession = UdacitySession(id: sessionId, expiration: expirationDate)
+                let expired = (self.udacitySession?.isDateExpired())!
+                if !expired {
+                    completionHandlerForSession(true, nil)
+                }
+                else {
+                    completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Udacity session has expired"]))
+                    print("The server response contains an expired session: ", self.udacitySession.debugDescription)
+                    return
+                }
+                
             }
         }
     }
@@ -77,10 +85,12 @@ extension UdacityClient {
             if let error = error {
                 completionHandlerForSession(false, error)
             } else {
+//                var expirationDate: String? = nil
+//                var sessionId: String? = nil
+                
                 // check the expiration date
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
-                    let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String,
-                    !expirationDate.isDateExpired () else {
+                    let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
                         completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse deleteToRemoveSessionID or session has expired"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
@@ -92,9 +102,10 @@ extension UdacityClient {
                     print(("Cannot find key '\(UdacityClient.JSONResponseKeys.SessionId)' in \(results ?? "unknown" as AnyObject)"))
                     return
                 }
-                
-                // if sessionId is different from self.sessionID, check out was correct
-                completionHandlerForSession(self.sessionID != sessionId, nil)
+                let success = self.udacitySession?.sessionId != sessionId
+                self.udacitySession = UdacitySession(id: sessionId, expiration: expirationDate)
+                // if sessionId is different from self.sessionID, the logout was correct
+                completionHandlerForSession(success, nil)
             }
         }
     }

@@ -22,6 +22,7 @@
 		4F451A8F201F5103004DD063 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F451A8E201F5103004DD063 /* Alerts.swift */; };
 		4F66EE4020208A56008CD707 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE3F20208A56008CD707 /* Styles.swift */; };
 		4F66EE422020C155008CD707 /* UdacityClientUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE412020C155008CD707 /* UdacityClientUtils.swift */; };
+		4F66EE462020DE0C008CD707 /* MapAndTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE452020DE0C008CD707 /* MapAndTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		4F451A8E201F5103004DD063 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4F66EE3F20208A56008CD707 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		4F66EE412020C155008CD707 /* UdacityClientUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClientUtils.swift; sourceTree = "<group>"; };
+		4F66EE452020DE0C008CD707 /* MapAndTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				4F41DDB5201A4CAD00C032B9 /* AppDelegate.swift */,
 				4F41DDB7201A4CAD00C032B9 /* LoginViewController.swift */,
 				4F41DDC1201A4CAD00C032B9 /* Info.plist */,
+				4F66EE452020DE0C008CD707 /* MapAndTableController.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				4F41DDB6201A4CAD00C032B9 /* AppDelegate.swift in Sources */,
 				4F451A88201B68DA004DD063 /* UdacityConvenience.swift in Sources */,
 				4F66EE422020C155008CD707 /* UdacityClientUtils.swift in Sources */,
+				4F66EE462020DE0C008CD707 /* MapAndTableController.swift in Sources */,
 				4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

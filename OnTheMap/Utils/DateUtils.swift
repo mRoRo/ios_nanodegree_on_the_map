@@ -23,13 +23,3 @@ extension DateFormatter {
     }
 }
 
-extension String {
-    func isDateExpired ()-> Bool {
-        let formatter = DateFormatter()
-        if let utcDate = formatter.datefromUdacityApiString(self) {
-            return Date().compare(utcDate) == .orderedDescending
-        }
-        
-        return false
-    }
-}

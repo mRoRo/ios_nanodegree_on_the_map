@@ -35,7 +35,7 @@ extension UdacityClient {
                 // check the registered value
                 guard let account = results?[UdacityClient.JSONResponseKeys.Account] as? [String : AnyObject],
                     let registered = account[UdacityClient.JSONResponseKeys.Registered] as? Bool, registered == true else {
-                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
+                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the login process"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
@@ -43,19 +43,19 @@ extension UdacityClient {
                 // check the expiration date
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
                     let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
-                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
+                        completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the login process"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
                 
                 // check the session ID
                 guard let sessionId = session[UdacityClient.JSONResponseKeys.SessionId] as? String, sessionId != "" else {
-                    completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToGetSessionID"]))
+                    completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the login process"]))
                     print(("Cannot find key '\(UdacityClient.JSONResponseKeys.SessionId)' in \(results ?? "unknown" as AnyObject)"))
                     return
                 }
                 
-                // change Session
+                // update Session
                 self.udacitySession = UdacitySession(id: sessionId, expiration: expirationDate)
                 let expired = (self.udacitySession?.isDateExpired())!
                 if !expired {
@@ -91,14 +91,14 @@ extension UdacityClient {
                 // check the expiration date
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
                     let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
-                        completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse deleteToRemoveSessionID or session has expired"]))
+                        completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the logout process or session has expired"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
                 
                 // check the session ID
                 guard let sessionId = session[UdacityClient.JSONResponseKeys.SessionId] as? String, sessionId != "" else {
-                    completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse deleteToRemoveSessionID"]))
+                    completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the logout process"]))
                     print(("Cannot find key '\(UdacityClient.JSONResponseKeys.SessionId)' in \(results ?? "unknown" as AnyObject)"))
                     return
                 }

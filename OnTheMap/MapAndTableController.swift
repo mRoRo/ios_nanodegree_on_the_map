@@ -11,10 +11,17 @@ import UIKit
 class MapAndTableController : UITabBarController {
     @IBOutlet var logoutButton: UIBarButtonItem!
     
+    var studentsLocations = [StudentLocation]()
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         styleLogoutButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateStudentsLocations()
     }
     
     // MARK: Actions
@@ -37,4 +44,23 @@ class MapAndTableController : UITabBarController {
         }
     }
     
+    // MARK: Network
+    func updateStudentsLocations() {
+        view.showBlurLoader()
+        
+        let _ = ParseClient.sharedInstance().getStudentsLocations() { (locations, error) in
+            self.view.removeBlurLoader()
+            
+            if let error = error {
+                print("There was an error at getStudentsLocations: \(error)")
+                self.showAlert(text:error.localizedDescription)
+            }
+            
+            if let locations = locations {
+                self.studentsLocations = locations
+                print("getStudents has finished")
+                // TODO: update markers at map & cells at table
+            }
+        }
+    }
 }

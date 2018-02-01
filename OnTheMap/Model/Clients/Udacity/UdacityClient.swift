@@ -31,7 +31,7 @@ class UdacityClient : NSObject {
         
         func isDateExpired () -> Bool {
             let formatter = DateFormatter()
-            if let utcDate = formatter.datefromUdacityApiString(expirationDate) {
+            if let utcDate = formatter.dateFromApiString(expirationDate) {
                  return Date().compare(utcDate) == .orderedDescending
             }
             return true
@@ -43,28 +43,12 @@ class UdacityClient : NSObject {
         super.init()
     }
     
-    // MARK: URL
-    func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
-        
-        var components = URLComponents()
-        components.scheme = UdacityClient.Constants.ApiScheme
-        components.host = UdacityClient.Constants.ApiHost
-        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
-        components.queryItems = [URLQueryItem]()
-        
-        for (key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.url!
-    }
 
     // MARK: POST
     func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: Data, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters, withPathExtension: method))
+        let request = NSMutableURLRequest(url: urlFromParameters(parameters, withPathExtension: method, api: .Udacity))
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -76,7 +60,7 @@ class UdacityClient : NSObject {
             guard let usefulData = self.getUsefulData(domain: "taskForPOSTMethod", request: request as URLRequest, data: data, response: response, error: error as NSError?, completionHandler: completionHandlerForPOST) else {
                 return
             }
-            self.convertDataWithCompletionHandler(usefulData, completionHandlerForConvertData: completionHandlerForPOST)
+            convertDataWithCompletionHandler(usefulData, completionHandlerForConvertData: completionHandlerForPOST)
         }
         
         /* 7. Start the request */
@@ -90,7 +74,7 @@ class UdacityClient : NSObject {
     func taskForDELETEMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForDELETE: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: udacityURLFromParameters(parameters, withPathExtension: method))
+        let request = NSMutableURLRequest(url: urlFromParameters(parameters, withPathExtension: method, api: .Udacity))
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
@@ -108,13 +92,28 @@ class UdacityClient : NSObject {
             guard let usefulData = self.getUsefulData(domain: "taskForDELETEMethod", request: request as URLRequest, data: data, response: response, error: error as NSError?, completionHandler: completionHandlerForDELETE) else {
                 return
             }
-            self.convertDataWithCompletionHandler(usefulData, completionHandlerForConvertData: completionHandlerForDELETE)
+            convertDataWithCompletionHandler(usefulData, completionHandlerForConvertData: completionHandlerForDELETE)
         }
         
         /* 7. Start the request */
         task.resume()
 
         return task
+    }
+    
+    // get Data from response and remove the first 5 characters
+    func getUsefulData(domain: String, request:URLRequest, data: Data?, response: URLResponse?, error: NSError?, completionHandler: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)->Data? {
+        let data = getData(domain: domain, request: request, data: data, response: response, error: error, completionHandler: completionHandler)
+        
+        guard let responseData = data else {
+            return nil
+        }
+        
+        /* Parse the data and use the data (happens in completion handler) */
+        let range = Range(5..<responseData.count)
+        let usefulData = responseData.subdata(in: range) /* subset response data! */
+        print(String(data: usefulData, encoding: .utf8)!)
+        return usefulData
     }
     
     // MARK: Shared Instance

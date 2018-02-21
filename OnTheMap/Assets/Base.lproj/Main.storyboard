@@ -245,7 +245,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addButton" destination="sqD-g5-ngs" id="0Zl-Nk-yPG"/>
                         <outlet property="logoutButton" destination="RtD-tf-mAR" id="eNa-cZ-Hoy"/>
+                        <outlet property="refreshButton" destination="iAf-NG-N6T" id="doK-zO-bbx"/>
                         <segue destination="lFD-up-2G8" kind="relationship" relationship="viewControllers" id="YGh-QK-WLV"/>
                         <segue destination="LNC-Nv-vA5" kind="relationship" relationship="viewControllers" id="OnF-wc-9Zg"/>
                     </connections>

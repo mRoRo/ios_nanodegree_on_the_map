@@ -21,6 +21,7 @@ class MapAndTableController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         styleLogoutButton()
+        updateStudentsLocations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +50,30 @@ class MapAndTableController : UITabBarController {
     
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        if let viewController = selectedViewController as? RefreshData {
-            viewController.refresh()
+        updateStudentsLocations()
+    }
+    
+    
+    // MARK: Network
+    func updateStudentsLocations() {
+        self.view.showBlurLoader()
+        
+        let _ = ParseClient.sharedInstance().getStudentsLocations() { (locations, error) in
+            self.view.removeBlurLoader()
+            
+            if let error = error {
+                print("There was an error at getStudentsLocations: \(error)")
+                self.showAlert(text:error.localizedDescription)
+            }
+            
+            if let locations = locations {
+                StudentModel.sharedInstance.studentsLocations = locations
+                if let viewController = self.selectedViewController as? RefreshData {
+                    viewController.refresh()
+                }
+                print("updateStudentsLocations has finished successfully")
+            }
         }
     }
+    
 }

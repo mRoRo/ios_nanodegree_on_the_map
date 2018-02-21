@@ -31,6 +31,8 @@
 		4F66EE462020DE0C008CD707 /* MapAndTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE452020DE0C008CD707 /* MapAndTableController.swift */; };
 		4FF026DC203D7BBF002111F7 /* MapController+MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */; };
 		4FF026DE203D9268002111F7 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026DD203D9268002111F7 /* MapController.swift */; };
+		4FF026E2203DBADB002111F7 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E1203DBADB002111F7 /* TableController.swift */; };
+		4FF026E4203DD46D002111F7 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E3203DD46D002111F7 /* StudentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		4F66EE452020DE0C008CD707 /* MapAndTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndTableController.swift; sourceTree = "<group>"; };
 		4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+MapDelegate.swift"; sourceTree = "<group>"; };
 		4FF026DD203D9268002111F7 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		4FF026E1203DBADB002111F7 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		4FF026E3203DD46D002111F7 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 				4F451A7A201B23C6004DD063 /* View */,
 				4F41DDC7201A4D6500C032B9 /* Assets */,
 				4F41DDB5201A4CAD00C032B9 /* AppDelegate.swift */,
+				4FF026E1203DBADB002111F7 /* TableController.swift */,
 				4F41DDB7201A4CAD00C032B9 /* LoginViewController.swift */,
 				4F41DDC1201A4CAD00C032B9 /* Info.plist */,
 				4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */,
@@ -132,6 +137,7 @@
 			children = (
 				4F530C332021D40400A00196 /* HTTPStatusCodes.swift */,
 				4F451A7E201B3E9E004DD063 /* Clients */,
+				4FF026E3203DD46D002111F7 /* StudentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,10 +265,12 @@
 			files = (
 				4F530C422021E29100A00196 /* UdacityClient.swift in Sources */,
 				4FF026DE203D9268002111F7 /* MapController.swift in Sources */,
+				4FF026E2203DBADB002111F7 /* TableController.swift in Sources */,
 				4F530C432021E29100A00196 /* UdacityConstants.swift in Sources */,
 				4F530C342021D40400A00196 /* HTTPStatusCodes.swift in Sources */,
 				4F66EE4020208A56008CD707 /* Styles.swift in Sources */,
 				4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */,
+				4FF026E4203DD46D002111F7 /* StudentModel.swift in Sources */,
 				4F451A7C201B23E4004DD063 /* ViewConstants.swift in Sources */,
 				4F530C462021E2AA00A00196 /* ParseClient.swift in Sources */,
 				4F530C492021E2D400A00196 /* StudentLocation.swift in Sources */,

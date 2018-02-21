@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="90" y="374"/>
         </scene>
-        <!--View Controller-->
+        <!--Table Controller-->
         <scene sceneID="pK2-Wn-GQL">
             <objects>
-                <viewController id="LNC-Nv-vA5" sceneMemberID="viewController">
+                <viewController id="LNC-Nv-vA5" customClass="TableController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gkX-z6-P40">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,15 +130,39 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CgR-Z8-pJp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="StudentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTableViewCell" textLabel="m7Q-Yy-bYS" detailTextLabel="BUd-l3-Dms" imageView="HyY-G7-8ef" style="IBUITableViewCellStyleSubtitle" id="CgR-Z8-pJp">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CgR-Z8-pJp" id="pd4-F2-yTU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m7Q-Yy-bYS">
+                                                    <rect key="frame" x="54" y="2" width="35" height="21.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Pin" id="HyY-G7-8ef">
+                                                    <rect key="frame" x="15" y="9" width="24" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BUd-l3-Dms">
+                                                    <rect key="frame" x="54" y="23.5" width="53" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LNC-Nv-vA5" id="bIE-OH-avE"/>
+                                    <outlet property="delegate" destination="LNC-Nv-vA5" id="wsY-6k-15Y"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,6 +175,9 @@
                         <viewLayoutGuide key="safeArea" id="LXd-de-1sa"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="List view" id="r6f-Bz-TcX"/>
+                    <connections>
+                        <outlet property="tableView" destination="chk-Rb-gRA" id="kjP-Od-N6v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhw-G9-zC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,6 +276,7 @@
         <image name="List view" width="75" height="50"/>
         <image name="Logo" width="62" height="62"/>
         <image name="Map view" width="75" height="50"/>
+        <image name="Pin" width="24" height="24"/>
         <image name="Refresh" width="24" height="24"/>
     </resources>
 </document>

@@ -22,15 +22,23 @@ import MapKit
 
 extension MapController: MKMapViewDelegate {
     
+    // MARK: Properties
     static let DefaultMediaUrl = "www.udacity.com"
     
-    func updateStudentLocationsInMap(_ locations: [StudentLocation]) {
-        // We will create an MKPointAnnotation for each StudentLocation in "locations". The
+    func updateStudentLocationsInMap() {
+        
+        // Clear the map markers
+        mapView.removeAnnotations(mapView.annotations)
+        
+        // Get locations
+        studentsLocations = StudentModel.sharedInstance.studentsLocations
+        
+        // We will create an MKPointAnnotation for each StudentLocation in "studentsLocations". The
         // point annotations will be stored in this array, and then provided to the map view.
         var annotations = [MKPointAnnotation]()
         
         // The "locations" array is loaded in MapController.        
-        for location in locations {
+        for location in studentsLocations {
             
             // Notice that the float values are being used to create CLLocationDegree values.
             // This is a version of the Double type.

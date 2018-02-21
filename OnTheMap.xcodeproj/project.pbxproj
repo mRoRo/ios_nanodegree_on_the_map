@@ -29,6 +29,8 @@
 		4F530C4D2022111E00A00196 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F530C4C2022111E00A00196 /* ParseConvenience.swift */; };
 		4F66EE4020208A56008CD707 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE3F20208A56008CD707 /* Styles.swift */; };
 		4F66EE462020DE0C008CD707 /* MapAndTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66EE452020DE0C008CD707 /* MapAndTableController.swift */; };
+		4FF026DC203D7BBF002111F7 /* MapController+MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */; };
+		4FF026DE203D9268002111F7 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026DD203D9268002111F7 /* MapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		4F530C4C2022111E00A00196 /* ParseConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		4F66EE3F20208A56008CD707 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		4F66EE452020DE0C008CD707 /* MapAndTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndTableController.swift; sourceTree = "<group>"; };
+		4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapController+MapDelegate.swift"; sourceTree = "<group>"; };
+		4FF026DD203D9268002111F7 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,9 @@
 				4F41DDB5201A4CAD00C032B9 /* AppDelegate.swift */,
 				4F41DDB7201A4CAD00C032B9 /* LoginViewController.swift */,
 				4F41DDC1201A4CAD00C032B9 /* Info.plist */,
+				4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */,
 				4F66EE452020DE0C008CD707 /* MapAndTableController.swift */,
+				4FF026DD203D9268002111F7 /* MapController.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F530C422021E29100A00196 /* UdacityClient.swift in Sources */,
+				4FF026DE203D9268002111F7 /* MapController.swift in Sources */,
 				4F530C432021E29100A00196 /* UdacityConstants.swift in Sources */,
 				4F530C342021D40400A00196 /* HTTPStatusCodes.swift in Sources */,
 				4F66EE4020208A56008CD707 /* Styles.swift in Sources */,
@@ -270,6 +277,7 @@
 				4F530C4B2021F48600A00196 /* RequestUtils.swift in Sources */,
 				4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */,
 				4F530C412021E29100A00196 /* UdacityConvenience.swift in Sources */,
+				4FF026DC203D7BBF002111F7 /* MapController+MapDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

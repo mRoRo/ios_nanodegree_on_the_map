@@ -156,16 +156,19 @@
             </objects>
             <point key="canvasLocation" x="2542.5" y="692.95774647887322"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Controller-->
         <scene sceneID="3B9-s3-gHr">
             <objects>
-                <viewController id="lFD-up-2G8" sceneMemberID="viewController">
+                <viewController id="lFD-up-2G8" customClass="MapController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CUK-td-OiX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DyO-Vv-RbR">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lFD-up-2G8" id="EcI-8H-VkC"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,6 +181,9 @@
                         <viewLayoutGuide key="safeArea" id="PGX-LX-w8a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Map view" selectedImage="Map view" id="irV-pi-lkw"/>
+                    <connections>
+                        <outlet property="mapView" destination="DyO-Vv-RbR" id="DXw-Wc-gCI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kp8-2H-MxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,6 +206,9 @@
                             </barButtonItem>
                             <barButtonItem title="Item" image="Refresh" id="iAf-NG-N6T">
                                 <color key="tintColor" red="0.0078431372550000003" green="0.70588235290000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="ohv-LO-P8s" id="PRN-NT-KWU"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>

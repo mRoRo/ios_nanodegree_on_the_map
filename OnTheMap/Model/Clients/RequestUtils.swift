@@ -87,7 +87,7 @@ func getData(domain: String, request:URLRequest, data: Data?, response: URLRespo
         return nil
     }
 
-    print(String(data: data, encoding: .utf8)!)
+    // print(String(data: data, encoding: .utf8)!)
     return data
 }
 

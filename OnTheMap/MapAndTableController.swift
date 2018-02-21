@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import MapKit
+
+// refreshButton protocol
+protocol RefreshData {
+    func refresh()
+}
 
 class MapAndTableController : UITabBarController {
     @IBOutlet var logoutButton: UIBarButtonItem!
-    
-    var studentsLocations = [StudentLocation]()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -21,7 +25,6 @@ class MapAndTableController : UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateStudentsLocations()
     }
     
     // MARK: Actions
@@ -44,23 +47,10 @@ class MapAndTableController : UITabBarController {
         }
     }
     
-    // MARK: Network
-    func updateStudentsLocations() {
-        view.showBlurLoader()
-        
-        let _ = ParseClient.sharedInstance().getStudentsLocations() { (locations, error) in
-            self.view.removeBlurLoader()
-            
-            if let error = error {
-                print("There was an error at getStudentsLocations: \(error)")
-                self.showAlert(text:error.localizedDescription)
-            }
-            
-            if let locations = locations {
-                self.studentsLocations = locations
-                print("getStudents has finished")
-                // TODO: update markers at map & cells at table
-            }
+    
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        if let viewController = selectedViewController as? RefreshData {
+            viewController.refresh()
         }
     }
 }

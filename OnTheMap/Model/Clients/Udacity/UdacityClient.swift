@@ -112,7 +112,7 @@ class UdacityClient : NSObject {
         /* Parse the data and use the data (happens in completion handler) */
         let range = Range(5..<responseData.count)
         let usefulData = responseData.subdata(in: range) /* subset response data! */
-        print(String(data: usefulData, encoding: .utf8)!)
+        // print(String(data: usefulData, encoding: .utf8)!)
         return usefulData
     }
     

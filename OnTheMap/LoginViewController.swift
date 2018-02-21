@@ -82,7 +82,7 @@ class LoginViewController: UIViewController {
                 self.showAlert(text:error.localizedDescription)
             }
             else if success {
-                print ("Logged!!")
+                print ("Logged!! in")
                 self.presentMapAndTableTabbedView()
             }
             self.view.removeBlurLoader()

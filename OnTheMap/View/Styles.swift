@@ -29,3 +29,20 @@ extension MapAndTableController {
         logoutButton.tintColor = UIColor.udacityBlue
     }
 }
+
+extension TableController {
+    
+    func addPullRefresh (tableView: UITableView, refreshControl: UIRefreshControl) {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        // Configure Refresh Control
+        refreshControl.tintColor = UIColor.udacityBlue
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching student locations", attributes: [.foregroundColor: UIColor.udacityBlue])
+        refreshControl.addTarget(self, action: #selector(fetchTableData(_:)), for: .valueChanged)
+    }
+}

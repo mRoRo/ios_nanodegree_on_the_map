@@ -21,7 +21,7 @@ class TableController: UIViewController, RefreshData {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPullRefresh()
+        addPullRefresh(tableView: tableView, refreshControl: refreshControl)
         studentsLocations = StudentModel.sharedInstance.studentsLocations
     }
     
@@ -40,19 +40,7 @@ class TableController: UIViewController, RefreshData {
     }
     
     // MARK: UI
-    private func addPullRefresh () {
-        // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
-        
-        // Configure Refresh Control
-        refreshControl.addTarget(self, action: #selector(refreshTableData(_:)), for: .valueChanged)
-    }
-    
-    @objc private func refreshTableData(_ sender: Any) {
+    @objc func fetchTableData(_ sender: Any) {
         StudentModel.sharedInstance.updateStudentsLocations(controller:self)
     }
 }

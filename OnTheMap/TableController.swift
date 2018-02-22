@@ -70,9 +70,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let location = studentsLocations[(indexPath as NSIndexPath).row]
-        if let toOpen = location.mediaUrl {
-            openUrlInSafari(urlString: toOpen, viewController: self)
-        }
+        openUrlInSafari(urlString: location.mediaUrl, viewController: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -130,7 +130,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="StudentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTableViewCell" textLabel="m7Q-Yy-bYS" detailTextLabel="BUd-l3-Dms" imageView="HyY-G7-8ef" style="IBUITableViewCellStyleSubtitle" id="CgR-Z8-pJp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentTableViewCell" textLabel="m7Q-Yy-bYS" detailTextLabel="BUd-l3-Dms" imageView="HyY-G7-8ef" style="IBUITableViewCellStyleSubtitle" id="CgR-Z8-pJp">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CgR-Z8-pJp" id="pd4-F2-yTU">
@@ -207,7 +207,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PGX-LX-w8a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Map view" selectedImage="Map view" id="irV-pi-lkw"/>
+                    <tabBarItem key="tabBarItem" title="" image="Map view" id="irV-pi-lkw"/>
                     <connections>
                         <outlet property="mapView" destination="DyO-Vv-RbR" id="DXw-Wc-gCI"/>
                     </connections>
@@ -228,10 +228,10 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="Add" id="sqD-g5-ngs">
+                            <barButtonItem image="Add" id="sqD-g5-ngs">
                                 <color key="tintColor" red="0.0078431372550000003" green="0.70588235290000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="Refresh" id="iAf-NG-N6T">
+                            <barButtonItem image="Refresh" id="iAf-NG-N6T">
                                 <color key="tintColor" red="0.0078431372550000003" green="0.70588235290000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="refreshButtonPressed:" destination="ohv-LO-P8s" id="PRN-NT-KWU"/>

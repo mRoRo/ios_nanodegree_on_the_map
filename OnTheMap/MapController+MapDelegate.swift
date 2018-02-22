@@ -101,17 +101,9 @@ extension MapController: MKMapViewDelegate {
     // to the URL specified in the annotationViews subtitle property.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(URL(string: toOpen)!)
+                openUrlInSafari(urlString: toOpen, viewController: self)
             }
         }
     }
-//    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        
-//        if control == annotationView.rightCalloutAccessoryView {
-//            let app = UIApplication.sharedApplication()
-//            app.openURL(NSURL(string: annotationView.annotation.subtitle))
-//        }
-//    }
 }

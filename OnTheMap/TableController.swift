@@ -56,7 +56,7 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         let firstName = location.firstName ?? TableController.NoFirstNameString
         let lastName = location.lastName ?? TableController.NoLastNameString
         let mediaUrl = location.mediaUrl ?? TableController.NoMediaUrlString
-        cell?.textLabel!.text = firstName + lastName
+        cell?.textLabel!.text = firstName + " " + lastName
         cell?.detailTextLabel?.text = mediaUrl
         cell?.imageView!.image = UIImage(named: "Pin")
         cell?.imageView!.contentMode = UIViewContentMode.scaleAspectFit
@@ -69,9 +69,10 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let controller = storyboard!.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
-//        controller.movie = movies[(indexPath as NSIndexPath).row]
-//        navigationController!.pushViewController(controller, animated: true)
+        let location = studentsLocations[(indexPath as NSIndexPath).row]
+        if let toOpen = location.mediaUrl {
+            openUrlInSafari(urlString: toOpen, viewController: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

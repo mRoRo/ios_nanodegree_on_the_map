@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
+let errorString = "Invalid Link"
+
 func openUrlInSafari (urlString: String, viewController: UIViewController) {
     let app = UIApplication.shared
     guard let url = URL(string: urlString) else {
-        viewController.showAlert(text: "Invalid Link")
+        viewController.showAlert(text: errorString)
         return
     }
     
     if (!app.openURL(url)) {
-        viewController.showAlert(text: "Invalid Link")
+        viewController.showAlert(text: errorString)
     }
 }

@@ -34,6 +34,7 @@
 		4FF026E2203DBADB002111F7 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E1203DBADB002111F7 /* TableController.swift */; };
 		4FF026E4203DD46D002111F7 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E3203DD46D002111F7 /* StudentModel.swift */; };
 		4FF026E6203EB6D7002111F7 /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E5203EB6D7002111F7 /* UrlUtils.swift */; };
+		4FF026E8203ED8FF002111F7 /* TableController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		4FF026E1203DBADB002111F7 /* TableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		4FF026E3203DD46D002111F7 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		4FF026E5203EB6D7002111F7 /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
+		4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableController+TableDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */,
 				4F66EE452020DE0C008CD707 /* MapAndTableController.swift */,
 				4FF026DD203D9268002111F7 /* MapController.swift */,
+				4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				4FF026E2203DBADB002111F7 /* TableController.swift in Sources */,
 				4F530C432021E29100A00196 /* UdacityConstants.swift in Sources */,
 				4F530C342021D40400A00196 /* HTTPStatusCodes.swift in Sources */,
+				4FF026E8203ED8FF002111F7 /* TableController+TableDelegate.swift in Sources */,
 				4FF026E6203EB6D7002111F7 /* UrlUtils.swift in Sources */,
 				4F66EE4020208A56008CD707 /* Styles.swift in Sources */,
 				4F451A8B201F0E13004DD063 /* DateUtils.swift in Sources */,

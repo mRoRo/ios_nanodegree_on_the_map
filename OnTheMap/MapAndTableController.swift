@@ -9,12 +9,18 @@
 import UIKit
 import MapKit
 
-// refreshButton protocol
+// refresh data in view protocol
 protocol RefreshData {
     func refresh()
 }
 
-class MapAndTableController : UITabBarController {
+// fetch new data protocol
+protocol FetchData {
+    func fetchStarts ()
+    func fetchEnds ()
+}
+
+class MapAndTableController : UITabBarController, FetchData {
     @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var refreshButton: UIBarButtonItem!
     @IBOutlet var addButton: UIBarButtonItem!
@@ -27,7 +33,7 @@ class MapAndTableController : UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateStudentsLocations()
+        fetchStudentLocations()
     }
     
     // MARK: Actions
@@ -52,37 +58,19 @@ class MapAndTableController : UITabBarController {
     
     
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        updateStudentsLocations()
+        fetchStudentLocations()
     }
     
     
     // MARK: Network
-    func updateStudentsLocations() {
-        setIsUpdatingUI()
-        
-        let _ = ParseClient.sharedInstance().getStudentsLocations() { (locations, error) in
-            
-            if let error = error {
-                print("There was an error at getStudentsLocations: \(error)")
-                self.showAlert(text:error.localizedDescription)
-            }
-            
-            if let locations = locations {
-                StudentModel.sharedInstance.studentsLocations = locations
-                if let viewController = self.selectedViewController as? RefreshData {
-                    viewController.refresh()
-                }
-                print("updateStudentsLocations has finished successfully")
-            }
-            
-            self.setIsUpdatedUI()
-        }
+    func fetchStudentLocations() {
+        StudentModel.sharedInstance.updateStudentsLocations(controller:self)
     }
 }
 
 extension MapAndTableController {
     // MARK: UI
-    func setIsUpdatingUI () {
+    func fetchStarts () {
         DispatchQueue.main.async {
             self.selectedViewController?.view.showBlurLoader()
             self.refreshButton.isEnabled = false
@@ -93,13 +81,16 @@ extension MapAndTableController {
         }
     }
     
-    func setIsUpdatedUI () {
+    func fetchEnds () {
         DispatchQueue.main.async {
             self.selectedViewController?.view.removeBlurLoader()
             self.refreshButton.isEnabled = true
             self.addButton.isEnabled = true
             for item in self.tabBar.items! {
                 item.isEnabled = true
+            }
+            if let viewController = self.selectedViewController as? RefreshData {
+               viewController.refresh()
             }
         }
     }

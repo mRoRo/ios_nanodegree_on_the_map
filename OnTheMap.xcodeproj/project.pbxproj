@@ -35,6 +35,9 @@
 		4FF026E4203DD46D002111F7 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E3203DD46D002111F7 /* StudentModel.swift */; };
 		4FF026E6203EB6D7002111F7 /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E5203EB6D7002111F7 /* UrlUtils.swift */; };
 		4FF026E8203ED8FF002111F7 /* TableController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */; };
+		4FF026EE203EE635002111F7 /* AddLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026ED203EE635002111F7 /* AddLocationController.swift */; };
+		4FF026F0203F24E5002111F7 /* AddLocationMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF026EF203F24E5002111F7 /* AddLocationMapController.swift */; };
+		4FF0FA712040258F0046751F /* GeocodingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0FA702040258F0046751F /* GeocodingUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		4FF026E3203DD46D002111F7 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		4FF026E5203EB6D7002111F7 /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
 		4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableController+TableDelegate.swift"; sourceTree = "<group>"; };
+		4FF026ED203EE635002111F7 /* AddLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationController.swift; sourceTree = "<group>"; };
+		4FF026EF203F24E5002111F7 /* AddLocationMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationMapController.swift; sourceTree = "<group>"; };
+		4FF0FA702040258F0046751F /* GeocodingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,19 +106,14 @@
 		4F41DDB4201A4CAD00C032B9 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				4FF026E9203EE5CC002111F7 /* ViewControllers */,
 				4F451A89201F0DFC004DD063 /* Utils */,
 				4F451A84201B4FA1004DD063 /* ViewDelegates */,
 				4F451A7D201B3E92004DD063 /* Model */,
 				4F451A7A201B23C6004DD063 /* View */,
 				4F41DDC7201A4D6500C032B9 /* Assets */,
 				4F41DDB5201A4CAD00C032B9 /* AppDelegate.swift */,
-				4FF026E1203DBADB002111F7 /* TableController.swift */,
-				4F41DDB7201A4CAD00C032B9 /* LoginViewController.swift */,
 				4F41DDC1201A4CAD00C032B9 /* Info.plist */,
-				4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */,
-				4F66EE452020DE0C008CD707 /* MapAndTableController.swift */,
-				4FF026DD203D9268002111F7 /* MapController.swift */,
-				4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -182,6 +183,7 @@
 				4F451A8A201F0E13004DD063 /* DateUtils.swift */,
 				4F451A8C201F4ED6004DD063 /* GCDBlackBox.swift */,
 				4FF026E5203EB6D7002111F7 /* UrlUtils.swift */,
+				4FF0FA702040258F0046751F /* GeocodingUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -195,6 +197,37 @@
 				4F530C4C2022111E00A00196 /* ParseConvenience.swift */,
 			);
 			path = Parse;
+			sourceTree = "<group>";
+		};
+		4FF026E9203EE5CC002111F7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FF026EC203EE604002111F7 /* Map */,
+				4FF026EB203EE5FD002111F7 /* Table */,
+				4F41DDB7201A4CAD00C032B9 /* LoginViewController.swift */,
+				4FF026ED203EE635002111F7 /* AddLocationController.swift */,
+				4FF026EF203F24E5002111F7 /* AddLocationMapController.swift */,
+				4F66EE452020DE0C008CD707 /* MapAndTableController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FF026EB203EE5FD002111F7 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4FF026E1203DBADB002111F7 /* TableController.swift */,
+				4FF026E7203ED8FF002111F7 /* TableController+TableDelegate.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		4FF026EC203EE604002111F7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4FF026DB203D7BBE002111F7 /* MapController+MapDelegate.swift */,
+				4FF026DD203D9268002111F7 /* MapController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,15 +314,18 @@
 				4FF026E4203DD46D002111F7 /* StudentModel.swift in Sources */,
 				4F451A7C201B23E4004DD063 /* ViewConstants.swift in Sources */,
 				4F530C462021E2AA00A00196 /* ParseClient.swift in Sources */,
+				4FF026EE203EE635002111F7 /* AddLocationController.swift in Sources */,
 				4F530C492021E2D400A00196 /* StudentLocation.swift in Sources */,
 				4F530C472021E2AA00A00196 /* ParseConstants.swift in Sources */,
 				4F530C4D2022111E00A00196 /* ParseConvenience.swift in Sources */,
 				4F451A8F201F5103004DD063 /* Alerts.swift in Sources */,
 				4F451A8D201F4ED6004DD063 /* GCDBlackBox.swift in Sources */,
+				4FF026F0203F24E5002111F7 /* AddLocationMapController.swift in Sources */,
 				4F41DDB8201A4CAD00C032B9 /* LoginViewController.swift in Sources */,
 				4F41DDB6201A4CAD00C032B9 /* AppDelegate.swift in Sources */,
 				4F530C402021E29100A00196 /* UdacityClientUtils.swift in Sources */,
 				4F66EE462020DE0C008CD707 /* MapAndTableController.swift in Sources */,
+				4FF0FA712040258F0046751F /* GeocodingUtils.swift in Sources */,
 				4F530C4B2021F48600A00196 /* RequestUtils.swift in Sources */,
 				4F451A86201B4FCF004DD063 /* TextFields.swift in Sources */,
 				4F530C412021E29100A00196 /* UdacityConvenience.swift in Sources */,

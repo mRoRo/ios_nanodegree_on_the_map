@@ -20,7 +20,7 @@ protocol FetchData {
     func fetchEnds ()
 }
 
-class MapAndTableController : UITabBarController, FetchData {
+class MapAndTableController : UITabBarController {
     @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var refreshButton: UIBarButtonItem!
     @IBOutlet var addButton: UIBarButtonItem!
@@ -68,7 +68,7 @@ class MapAndTableController : UITabBarController, FetchData {
     }
 }
 
-extension MapAndTableController {
+extension MapAndTableController: FetchData {
     // MARK: UI
     func fetchStarts () {
         DispatchQueue.main.async {

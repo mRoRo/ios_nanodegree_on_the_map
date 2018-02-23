@@ -34,8 +34,8 @@ class TableController: UIViewController, RefreshData {
     func refresh() {
         studentsLocations = StudentModel.sharedInstance.studentsLocations
         performUIUpdatesOnMain {
-            self.tableView.reloadData()
             self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
         }
     }
     

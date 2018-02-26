@@ -20,6 +20,11 @@ protocol FetchData {
     func fetchEnds ()
 }
 
+// fetch
+protocol AddLocation {
+    func navigateToAddLocation ()
+}
+
 class MapAndTableController : UITabBarController {
     @IBOutlet var logoutButton: UIBarButtonItem!
     @IBOutlet var refreshButton: UIBarButtonItem!
@@ -38,21 +43,21 @@ class MapAndTableController : UITabBarController {
     
     // MARK: Actions
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        self.view.showBlurLoader()
+        fetchStarts()
         
         UdacityClient.sharedInstance().deleteToRemoveSessionID { (success, error) in
             if let error = error {
                 print("There was an error at deleteToRemoveSessionID: \(error)")
                 performUIUpdatesOnMain {
-                    self.showAlert(text:error.localizedDescription)
+                    self.showSimpleAlert(text:error.localizedDescription)
                 }
             }
             else if success{
-                print("Loged out!!")
+                print("Logged out!!")
                 self.dismiss(animated: true, completion: nil)
             }
             
-            self.view.removeBlurLoader()
+            self.fetchEnds()
         }
     }
     
@@ -61,8 +66,33 @@ class MapAndTableController : UITabBarController {
         fetchStudentLocations()
     }
     
-    
     // MARK: Network
+    @IBAction func addButtonPressed(_ sender: Any) {
+        fetchStarts()
+        
+        let _ = ParseClient.sharedInstance().getLastUserLocation() { (location, error) in
+            
+            if let error = error {
+                print("There was an error at getUserLocation: \(error)")
+                self.showSimpleAlert(text:error.localizedDescription)
+            }
+            
+            if let location = location {
+                let userName = "\"\(location.firstName ?? "") \(location.lastName ?? "")\""
+                let message = "User \(userName) has already posted a student location. Would you like to overwrite their location?"
+                self.showTwoButtonsAlert(text: message, viewController: self)
+                print("getUserLocation has finished successfully")
+            }
+            
+            else {
+                self.navigateToAddLocation()
+            }
+            
+           self.fetchEnds()
+        }
+    }
+    
+
     func fetchStudentLocations() {
         StudentModel.sharedInstance.updateStudentsLocations(controller:self)
     }
@@ -92,6 +122,15 @@ extension MapAndTableController: FetchData {
             if let viewController = self.selectedViewController as? RefreshData {
                viewController.refresh()
             }
+        }
+    }
+}
+
+extension MapAndTableController: AddLocation {
+    func navigateToAddLocation () {
+        if let navController = navigationController {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddLocationController") as! AddLocationController
+            navController.pushViewController(vc, animated: true)
         }
     }
 }

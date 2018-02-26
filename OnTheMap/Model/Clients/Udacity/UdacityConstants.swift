@@ -36,6 +36,7 @@ extension UdacityClient {
         static let Registered = "registered"
         static let SessionId = "id"
         static let Expiration = "expiration"
+        static let UserKey = "key"
     }
     
 }

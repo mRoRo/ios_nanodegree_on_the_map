@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         
         if userNameTextField.text!.isEmpty ||
             passwordTextField.text!.isEmpty {
-            self.showAlert(text:"Username or Password Empty.")
+            self.showSimpleAlert(text:"Username or Password Empty.")
         }
         else {
             self.view.showBlurLoader()
@@ -79,10 +79,10 @@ class LoginViewController: UIViewController {
         UdacityClient.sharedInstance().postToGetSessionID(userName: userName!, password: password!) { (success, error) in
             if let error = error {
                 print("There was an error at postToGetSessionID: \(error)")
-                self.showAlert(text:error.localizedDescription)
+                self.showSimpleAlert(text:error.localizedDescription)
             }
             else if success {
-                print ("Logged!! in")
+                print ("Logged in!!")
                 self.presentMapAndTableTabbedView()
             }
             self.view.removeBlurLoader()

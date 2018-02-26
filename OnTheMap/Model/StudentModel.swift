@@ -21,7 +21,7 @@ class StudentModel {
             
             if let error = error {
                 print("There was an error at getStudentsLocations: \(error)")
-                controller.showAlert(text:error.localizedDescription)
+                controller.showSimpleAlert(text:error.localizedDescription)
             }
             
             if let locations = locations {

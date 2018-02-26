@@ -43,7 +43,7 @@ class AddLocationController: UIViewController {
     @IBAction func findLocationButtonPressed(_ sender: Any) {
         if locationTextField.text!.isEmpty ||
             websiteTextField.text!.isEmpty {
-            self.showAlert(text:"Location or Website Empty.")
+            self.showSimpleAlert(text:"Location or Website Empty.")
         }
         else {
             view.showBlurLoader()
@@ -52,7 +52,7 @@ class AddLocationController: UIViewController {
             DispatchQueue.main.async {
                 if let error = error {
 
-                        self.showAlert(text: error.localizedDescription)
+                        self.showSimpleAlert(text: error.localizedDescription)
                     }
                 
                     else if let result = result,

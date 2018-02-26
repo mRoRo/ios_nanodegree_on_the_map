@@ -44,7 +44,7 @@ extension UdacityClient {
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
                     let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
                         completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the login process"]))
-                        print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
+                        print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Expiration)' in \(results ?? "unknown" as AnyObject)"))
                         return
                 }
                 
@@ -55,8 +55,15 @@ extension UdacityClient {
                     return
                 }
                 
+                // check the user ID
+                guard let userId = account[UdacityClient.JSONResponseKeys.UserKey] as? String, userId != "" else {
+                    completionHandlerForSession(false, NSError(domain: "postToGetSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the login process"]))
+                    print(("Cannot find key '\(UdacityClient.JSONResponseKeys.UserKey)' in \(results ?? "unknown" as AnyObject)"))
+                    return
+                }
+                
                 // update Session
-                self.udacitySession = UdacitySession(id: sessionId, expiration: expirationDate)
+                UdacityClient.sharedInstance().udacitySession = UdacitySession(session: sessionId, expiration: expirationDate, user: userId)
                 let expired = (self.udacitySession?.isDateExpired())!
                 if !expired {
                     completionHandlerForSession(true, nil)
@@ -66,7 +73,6 @@ extension UdacityClient {
                     print("The server response contains an expired session: ", self.udacitySession.debugDescription)
                     return
                 }
-                
             }
         }
     }
@@ -102,8 +108,7 @@ extension UdacityClient {
                     print(("Cannot find key '\(UdacityClient.JSONResponseKeys.SessionId)' in \(results ?? "unknown" as AnyObject)"))
                     return
                 }
-                let success = self.udacitySession?.sessionId != sessionId
-                self.udacitySession = UdacitySession(id: sessionId, expiration: expirationDate)
+                let success = UdacityClient.sharedInstance().udacitySession?.sessionId != sessionId
                 // if sessionId is different from self.sessionID, the logout was correct
                 completionHandlerForSession(success, nil)
             }

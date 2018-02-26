@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func showAlert(text: String) {
+    func showSimpleAlert(text: String) {
         let alert = UIAlertController(title: "", message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:nil))
         
@@ -47,6 +47,23 @@ extension UIView {
             self.subviews.flatMap {  $0 as? UIVisualEffectView }.forEach {
                 $0.removeFromSuperview()
             }
+        }
+    }
+}
+
+extension MapAndTableController {
+    func showTwoButtonsAlert(text: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: "", message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Overwrite", style: .default) {_ in
+            // show add location view
+            if let viewController = viewController as? AddLocation {
+                viewController.navigateToAddLocation()
+            }
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler:nil))
+        
+        performUIUpdatesOnMain {
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

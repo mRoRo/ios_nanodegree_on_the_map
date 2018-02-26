@@ -17,16 +17,17 @@ class UdacityClient : NSObject {
     // authentication state
     var requestToken: String? = nil
     var udacitySession : UdacitySession? = nil
-    var userID : Int? = nil
     
     struct UdacitySession {
         let sessionId: String
         let expirationDate: String
+        let userId: String
         
         // MARK: Initializers
-        init(id: String, expiration: String) {
-            sessionId = id
+        init(session: String, expiration: String, user: String) {
+            sessionId = session
             expirationDate = expiration
+            userId = user
         }
         
         func isDateExpired () -> Bool {

@@ -16,11 +16,11 @@ func openUrlInSafari (urlString: String?, viewController: UIViewController) {
     
     guard let urlString = urlString,
         let url = URL(string: urlString) else {
-        viewController.showAlert(text: errorString)
+        viewController.showSimpleAlert(text: errorString)
         return
     }
     
     if (!app.openURL(url)) {
-        viewController.showAlert(text: errorString)
+        viewController.showSimpleAlert(text: errorString)
     }
 }

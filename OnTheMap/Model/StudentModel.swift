@@ -10,6 +10,7 @@ import UIKit
 class StudentModel {
     
     var studentsLocations : [StudentLocation] = []
+    var userLocation : StudentLocation? = nil
     static let sharedInstance = StudentModel()
     
     func updateStudentsLocations(controller: UIViewController) {
@@ -36,5 +37,9 @@ class StudentModel {
                 viewController.fetchEnds()
             }
         }
+    }
+    
+    func updateStudentLocation(_ location: StudentLocation?) {
+        userLocation = location
     }
 }

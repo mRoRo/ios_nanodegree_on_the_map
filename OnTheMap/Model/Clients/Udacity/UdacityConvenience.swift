@@ -91,12 +91,10 @@ extension UdacityClient {
             if let error = error {
                 completionHandlerForSession(false, error)
             } else {
-//                var expirationDate: String? = nil
-//                var sessionId: String? = nil
                 
                 // check the expiration date
                 guard let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String : AnyObject],
-                    let expirationDate = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
+                    let _ = session[UdacityClient.JSONResponseKeys.Expiration] as? String else {
                         completionHandlerForSession(false, NSError(domain: "deleteToRemoveSessionID", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error during the logout process or session has expired"]))
                         print(("Cannot find key '\(UdacityClient.JSONResponseKeys.Account)' or '\(UdacityClient.JSONResponseKeys.Registered)' in \(results ?? "unknown" as AnyObject)"))
                         return

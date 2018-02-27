@@ -18,6 +18,15 @@ extension UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func showSimpleAlert(text: String, handler: @escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: "", message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: handler))
+        
+        performUIUpdatesOnMain {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension UIView {

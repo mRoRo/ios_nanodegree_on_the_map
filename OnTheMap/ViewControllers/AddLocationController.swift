@@ -72,11 +72,35 @@ class AddLocationController: UIViewController {
     private func navigateToLocationPreview (location: CLLocation, name: String, country: String) {
         if let navController = navigationController {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddLocationMapController") as! AddLocationMapController
-            vc.location = location
-            vc.address = name
-            vc.country = country
+            vc.userLocationUpdate = AddLocationMapController.UserLocationUpdate(
+                userLocation: location,
+                userAddress: getCompleteAddressString(name: name, country: country),
+                userMediaUrl: websiteTextField.text!,
+                userName: getCompleteUserName())
             
             navController.pushViewController(vc, animated: true)
+        }
+    }
+    
+    private func getCompleteAddressString (name: String, country: String) ->String {
+        var completeAddress = ""
+        if name != "" {
+            completeAddress = name
+        }
+        if country != "" {
+            completeAddress += ", " + country
+        }
+        return completeAddress
+    }
+    
+    private func getCompleteUserName () -> String {
+        if let firstName  = StudentModel.sharedInstance.userLocation?.firstName,
+            let lastName = StudentModel.sharedInstance.userLocation?.lastName {
+            return firstName + ", " + lastName
+        }
+        else {
+            return "Unknown name"
+            
         }
     }
 }

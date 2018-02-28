@@ -22,6 +22,9 @@ class AddLocationController: UIViewController {
         super.viewDidLoad()
         locationTextField.delegate = self
         websiteTextField.delegate = self
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        keyboardYLimit.buttonY = (findLocationButton?.frame.origin.y)! + stackView.frame.origin.y + contentView.frame.origin.y
     }
     
     override func viewWillAppear(_ animated: Bool) {

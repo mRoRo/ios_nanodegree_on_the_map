@@ -11,6 +11,7 @@ import SafariServices
 
 class LoginViewController: UIViewController {
     
+    
     // MARK: Properties
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var userNameTextField: UITextField!
@@ -27,6 +28,9 @@ class LoginViewController: UIViewController {
         styleButtons()
         userNameTextField.delegate = self
         passwordTextField.delegate = self
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        keyboardYLimit.buttonY = (loginButton?.frame.origin.y)! + stackView.frame.origin.y + contentView.frame.origin.y
     }
     
     override func viewWillAppear(_ animated: Bool) {

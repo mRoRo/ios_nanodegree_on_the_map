@@ -27,11 +27,11 @@ class TableController: UIViewController, RefreshData {
             tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
         }
         addPullRefresh(tableView: tableView, refreshControl: refreshControl)
-        studentsLocations = StudentModel.sharedInstance.studentsLocations
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        studentsLocations = StudentModel.sharedInstance.studentsLocations
         tableView.reloadData()
     }
     

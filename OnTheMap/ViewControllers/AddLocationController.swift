@@ -20,7 +20,6 @@ class AddLocationController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleButtons()
         locationTextField.delegate = self
         websiteTextField.delegate = self
     }

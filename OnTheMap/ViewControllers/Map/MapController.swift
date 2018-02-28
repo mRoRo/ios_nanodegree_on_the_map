@@ -13,6 +13,14 @@ class MapController : UIViewController, RefreshData {
     @IBOutlet var mapView: MKMapView!
     var studentsLocations: [StudentLocation] = [StudentLocation]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        performUIUpdatesOnMain {
+            self.refresh()
+        }
+
+    }
+    
     // MARK: RefreshData
     func refresh() {
         studentsLocations = StudentModel.sharedInstance.studentsLocations

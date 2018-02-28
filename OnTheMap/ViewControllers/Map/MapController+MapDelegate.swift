@@ -30,9 +30,6 @@ extension MapController: MKMapViewDelegate {
         // Clear the map markers
         mapView.removeAnnotations(mapView.annotations)
         
-        // Get locations
-        studentsLocations = StudentModel.sharedInstance.studentsLocations
-        
         // We will create an MKPointAnnotation for each StudentLocation in "studentsLocations". The
         // point annotations will be stored in this array, and then provided to the map view.
         var annotations = [MKPointAnnotation]()

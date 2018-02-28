@@ -18,7 +18,7 @@ extension ParseClient {
          _ completionHandlerForStudentsLocations: @escaping (_ result: [StudentLocation]?, _ error: NSError?) -> Void) {
         
         /* Specify parameters, method (if has {key}), and HTTP body (if POST) */
-        let parameters : [String:AnyObject] = Dictionary()
+        let parameters : [String:AnyObject] =  [ParseClient.ParameterKeys.StudentLocationOrder : order as AnyObject, ParseClient.ParameterKeys.StudentLocationLimit : limit as AnyObject]
         let method = ParseClient.Methods.StudentLocation
         
         /* Make the request */

@@ -43,8 +43,4 @@ extension TableController: UITableViewDelegate, UITableViewDataSource {
         let location = studentsLocations[(indexPath as NSIndexPath).row]
         openUrlInSafari(urlString: location.mediaUrl, viewController: self)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
 }

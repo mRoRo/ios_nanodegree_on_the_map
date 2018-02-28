@@ -21,6 +21,11 @@ class TableController: UIViewController, RefreshData {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let os = ProcessInfo().operatingSystemVersion
+        if (os.majorVersion <= 9) {
+            // remove top space
+            tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+        }
         addPullRefresh(tableView: tableView, refreshControl: refreshControl)
         studentsLocations = StudentModel.sharedInstance.studentsLocations
     }
@@ -34,8 +39,8 @@ class TableController: UIViewController, RefreshData {
     func refresh() {
         studentsLocations = StudentModel.sharedInstance.studentsLocations
         performUIUpdatesOnMain {
-            self.refreshControl.endRefreshing()
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

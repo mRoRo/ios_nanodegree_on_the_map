@@ -88,7 +88,7 @@ extension AddLocationController: UITextFieldDelegate {
         }
         
         @objc func keyboardWillShow(_ notification: Notification) {
-            let buttonY = (findLocationButton?.frame.origin.y)! + stackView.frame.origin.y
+            let buttonY = (findLocationButton?.frame.origin.y)! + stackView.frame.origin.y + contentView.frame.origin.y
             let keyboradY = view.frame.height - keyboardHeight(notification)
             
             // The keyboard would hide the TFs over the button

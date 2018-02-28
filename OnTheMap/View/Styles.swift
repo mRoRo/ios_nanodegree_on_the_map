@@ -36,7 +36,8 @@ extension TableController {
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
-        } else {
+        }
+        else {
             tableView.addSubview(refreshControl)
         }
         

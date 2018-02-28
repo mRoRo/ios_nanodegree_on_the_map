@@ -15,6 +15,7 @@ class AddLocationController: UIViewController {
     @IBOutlet var websiteTextField: UITextField!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var findLocationButton: UIButton!
+    @IBOutlet var contentView: UIView!
     
     // MARK: Lifecycle
     override func viewDidLoad() {

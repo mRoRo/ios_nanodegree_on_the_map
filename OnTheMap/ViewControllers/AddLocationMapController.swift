@@ -121,7 +121,7 @@ extension AddLocationMapController: MKMapViewDelegate {
             annotation.title = userLocation.address
             
             mapView.addAnnotation(annotation)
-            mapView.setCenter(userLocation.location.coordinate, animated: true)
+            centerMap(annotation.coordinate)
         }
 
     }
@@ -143,5 +143,11 @@ extension AddLocationMapController: MKMapViewDelegate {
         }
         
         return pinView
+    }
+    
+    
+    func centerMap(_ coordinate: CLLocationCoordinate2D) {
+        let mapRegion = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.01, 0.01))
+        mapView.setRegion(mapRegion, animated: true)
     }
 }

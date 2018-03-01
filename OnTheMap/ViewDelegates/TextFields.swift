@@ -29,7 +29,7 @@ extension UIViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = 0 - getViewYShift(notification: notification)
+        view.frame.origin.y = -getViewYShift(notification: notification)
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -43,8 +43,7 @@ extension UIViewController: UITextFieldDelegate {
     }
     
     func unsubscribeToKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     public func resignIfFirstResponder(_ textField: UITextField) {
